@@ -11,16 +11,18 @@
 /*
  * hwpe_subsystem.sv
  * Francesco Conti <fconti@iis.ee.ethz.ch>
+ * Arpan Suravi Prasad <prasadar@iis.ee.ethz.ch>
  */
 
 import hci_package::*;
+import neureka_package::NEUREKA_MEM_BANDWIDTH_EXT;
 
 module hwpe_subsystem
 #(
   parameter N_CORES       = 8,
   parameter N_MASTER_PORT = 9,
   parameter ID_WIDTH      = 8,
-  parameter USE_RBE       = 0
+  parameter USE_NEUREKA   = 1
 )
 (
   input  logic                    clk,
@@ -34,15 +36,23 @@ module hwpe_subsystem
   output logic                    busy_o
 );
 
+localparam BW = NEUREKA_MEM_BANDWIDTH_EXT;
+
   hwpe_ctrl_intf_periph #(
     .ID_WIDTH ( ID_WIDTH )
   ) periph (
     .clk ( clk )
   );
 
+  hci_core_intf #(
+    .DW ( BW )
+  ) tcdm_weight (
+    .clk ( clk_i )
+  );
+
   generate
-    if(USE_RBE) begin : rbe_gen
-      rbe_top #(
+    if(USE_NEUREKA) begin : neureka_gen
+      neureka_top #(
         .ID      ( ID_WIDTH         ),
         .N_CORES ( N_CORES          ),
         .BW      ( N_MASTER_PORT*32 )
@@ -52,10 +62,10 @@ module hwpe_subsystem
         .test_mode_i ( test_mode        ),
         .evt_o       ( evt_o            ),
         .tcdm        ( hwpe_xbar_master ),
-        .hci_ctrl_o  (                  ),
-        .periph      ( periph           )
+        .tcdm_weight ( tcdm_weight      ),
+        .periph      ( periph           ),
+        .busy_o      ( busy_o           )
       );
-      assign busy_o = 1'b1;
     end
     else begin : datamover_gen
       datamover_top #(
