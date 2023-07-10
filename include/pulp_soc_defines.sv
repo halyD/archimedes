@@ -22,7 +22,7 @@
 `define CLUSTER_ALIAS
 `define PRIVATE_ICACHE
 `define HIERARCHY_ICACHE_32BIT
-`define SHARED_FPU_CLUSTER
+// `define SHARED_FPU_CLUSTER
 `define FEATURE_ICACHE_STAT
 
 `define FC_FPU 1
@@ -34,11 +34,16 @@
   `define CLUST_FP_DIVSQRT 0
   `define CLUST_SHARED_FP 0
   `define CLUST_SHARED_FP_DIVSQRT 0
-`else
+`elsif SHARED_FPU_CLUSTER
   `define CLUST_FPU 1
   `define CLUST_FP_DIVSQRT 1
   `define CLUST_SHARED_FP 2
   `define CLUST_SHARED_FP_DIVSQRT 2
+`else
+  `define CLUST_FPU 1
+  `define CLUST_FP_DIVSQRT 1
+  `define CLUST_SHARED_FP 0
+  `define CLUST_SHARED_FP_DIVSQRT 0
 `endif 
 
 //PARAMETRES
