@@ -53,16 +53,14 @@ To perform a simulation in ArchiMEDES follow the following steps:
    make scripts/compile.tcl
    make build
    ```
-
-4. Source the environment:
-   ```
-   source env/env.sh
-   ```
-
-5. Download the sw stack:
+4. Download the SW stack:
 	```
 	make pulp-runtime
 	```
+5. Source the environment:
+   ```
+   source env/env.sh
+   ```
 
 6. To run these tests. Choose any test among the `archimedes_tests`, for example, `DW3x3` tests. 
    Move to the respective folder. 
