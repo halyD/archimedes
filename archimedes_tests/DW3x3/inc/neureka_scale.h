@@ -19,11 +19,7 @@
  */
 #define STIM_NQ_SIZE 64
 // scale [32]
-int8_t  L1_DATA neureka_scale[] = {
-  0x30,
-  0x08,
-  0x04,
-  0x36,
+int8_t  L2_DATA neureka_scale[] = {
   0x30,
   0x08,
   0x04,

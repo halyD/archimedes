@@ -19,7 +19,7 @@
  */
 #define STIM_Y_SIZE 1152
 // outfeat [6 x 6 x 32]
-uint8_t  L1_DATA neureka_actual_outfeat[] = {
+uint8_t  L2_DATA neureka_actual_outfeat[] = {
   0x00,
   0x00,
   0x00,

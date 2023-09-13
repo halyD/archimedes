@@ -17,13 +17,9 @@
 /*
  * Mantainer: Arpan Suravi Prasad <prasadar@iis.ee.ethz.ch>
  */
-#define STIM_NQ_SIZE 64
+#define STIM_NQ_SIZE 32
 // scale [32]
-int8_t  L1_DATA neureka_scale[] = {
-  0x00,
-  0x00,
-  0x00,
-  0x00,
+int8_t  L2_DATA neureka_scale[] = {
   0x30,
   0x08,
   0x04,

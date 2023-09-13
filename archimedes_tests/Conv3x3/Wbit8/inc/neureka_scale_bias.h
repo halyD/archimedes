@@ -19,7 +19,7 @@
  */
 #define STIM_NQB_SIZE 256
 // scale_bias [32]
-int32_t  L1_DATA neureka_scale_bias[] = {
+int32_t  L2_DATA neureka_scale_bias[] = {
   0x01e34add,
   0xfcc05695,
   0x0dd21738,

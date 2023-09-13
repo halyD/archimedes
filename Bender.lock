@@ -45,8 +45,8 @@ packages:
     dependencies:
     - hci
   common_cells:
-    revision: 4ac82b420e46fd0005513ca2283cb3c905e7599a
-    version: 1.29.0
+    revision: 53b0b58af2db5bd3c850a7038fae170ed78326bb
+    version: 1.31.1
     source:
       Git: https://github.com/pulp-platform/common_cells.git
     dependencies:
@@ -97,8 +97,8 @@ packages:
     - cv32e40p
     - fpnew
   hci:
-    revision: 8fb848e8f6722c1c21b44533535f430960c31b0b
-    version: 1.0.8
+    revision: 5bd3ea43275935c39d754173e9056a8c2ab35f5c
+    version: null
     source:
       Git: https://github.com/pulp-platform/hci.git
     dependencies:
@@ -118,8 +118,8 @@ packages:
     - scm
     - tech_cells_generic
   hwpe-ctrl:
-    revision: 4bf1487a463c262bf7d8ffee79d1cf392937daa2
-    version: 1.7.1
+    revision: bdf4921498cd46bb6074a85fb5124f8e7da764e9
+    version: null
     source:
       Git: https://github.com/pulp-platform/hwpe-ctrl.git
     dependencies:
@@ -166,6 +166,15 @@ packages:
       Git: https://github.com/pulp-platform/mchan.git
     dependencies:
     - common_cells
+  neureka:
+    revision: 04a2929f47e19df3b43f35da20e6a0615c72818d
+    version: null
+    source:
+      Git: git@github.com:pulp-platform/neureka.git
+    dependencies:
+    - hci
+    - hwpe-ctrl
+    - hwpe-stream
   per2axi:
     revision: 892fcad60b6374fe558cbde76f4a529d473ba5ca
     version: 1.0.4
@@ -180,15 +189,15 @@ packages:
       Git: https://github.com/pulp-platform/scm.git
     dependencies: []
   tech_cells_generic:
-    revision: a9cae21902e75b1434328ecf36f85327ba5717de
-    version: 0.2.11
+    revision: 298b7297d220ba2601d0f24f684f97ff32f61123
+    version: 0.2.12
     source:
       Git: https://github.com/pulp-platform/tech_cells_generic.git
     dependencies:
     - common_verification
   timer_unit:
-    revision: 3f4ee3e5b3875a473242de5d0c3ebb5a0fe4b8db
-    version: 1.0.2
+    revision: 4c69615c89db9397a9747d6f6d6a36727854f0bc
+    version: 1.0.3
     source:
       Git: https://github.com/pulp-platform/timer_unit.git
     dependencies: []

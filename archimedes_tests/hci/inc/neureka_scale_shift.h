@@ -19,7 +19,7 @@
  */
 #define STIM_NQS_SIZE 32
 // scale_shift [32]
-int8_t  L1_DATA neureka_scale_shift[] = {
+int8_t  L2_DATA neureka_scale_shift[] = {
   0x05,
   0x06,
   0x06,

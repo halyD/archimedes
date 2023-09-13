@@ -19,7 +19,7 @@
  */
 // infeat [6 x 6 x 32]
 #define STIM_X_SIZE 1152
-uint8_t L1_DATA neureka_infeat[] = {
+uint8_t L2_DATA neureka_infeat[] = {
   0x30,
   0x7e,
   0x9e,

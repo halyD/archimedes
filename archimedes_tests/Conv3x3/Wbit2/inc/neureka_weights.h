@@ -19,7 +19,7 @@
  */
 #define STIM_W_SIZE 2304
 // weights [32 x 1 x 2 x 3 x 3 x 4]
-uint8_t  L1_DATA neureka_weights[] = {
+uint8_t  L2_DATA neureka_weights[] = {
   0x00,
   0x00,
   0x22,

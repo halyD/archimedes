@@ -32,6 +32,7 @@ The following tests are given as a reference.
 - `DW3x3` - Showing a depthwise layer kernel execution on NEureka
 - `Conv1x1` - Mapping a pointwise layer kernel on NEureka  
 - `hci`- A very simple synthetic workload is provided to show the impact of HCI in the NEureka and RISC-V cluster cores coexecution. MAX_STALL parameter can be swept to see the stalls observed by NEureka
+- `streamin` - In this test, NEureka uses 32-bit data to initialize the accumulation buffers. On top of it NEureka performs convolution and generates a 32-bit output data. 
 
 
 ## Simulation
@@ -76,5 +77,3 @@ To perform a simulation in ArchiMEDES follow the following steps:
    ```
    make regression-tests 
    ```
-
-   ### Very soon, we are open-sourcing NEureka to run archimedes_tests. Stay tuned!!!

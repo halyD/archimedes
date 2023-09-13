@@ -18,7 +18,7 @@
  * Mantainer: Arpan Suravi Prasad <prasadar@iis.ee.ethz.ch>
  */
 #define STIM_ST_SIZE 1152
-uint8_t  L1_DATA neureka_streamin[] = {
+uint8_t  L2_DATA neureka_streamin[] = {
   0x00,
   0x00,
   0x00,
