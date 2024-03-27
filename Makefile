@@ -15,7 +15,7 @@ bwruntest = $(ROOT_DIR)/pulp-runtime/scripts/bwruntests.py
 
 CFLAGS ?= -I$(QUESTASIM_HOME)/include \
 					-I$(RISCV)/include/ \
-					-I/include -std=c++11 -I../tb/dpi -O3
+					-I/include -std=c++17 -I../tb/dpi -O3
 
 dpi := $(patsubst tb/dpi/%.cc, ${dpi-library}/%.o, $(wildcard tb/dpi/*.cc))
 
@@ -95,6 +95,8 @@ compile: $(library) $(dpi) $(dpi-library)/cl_dpi.so
 
 build: compile $(dpi)
 	vopt $(compile_flag) -suppress 3053 -suppress 8885 -work $(library)  $(top_level) -o $(top_level)_optimized +acc -check_synthesis
+	$(CXX) -shared -fPIC -std=c++0x -std=c++17 -I$(QUESTASIM_HOME)/include -I/include -c tb/dpi/elfloader.cc -o tb/dpi/elfloader.o
+	$(CXX) -shared tb/dpi/elfloader.o -o tb/dpi/elfloader.so
 
 
 run:
