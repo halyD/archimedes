@@ -82,6 +82,10 @@ $(dpi-library)/%.o: tb/dpi/%.cc $(dpi_hdr)
 	mkdir -p $(dpi-library)
 	$(CXX) -shared -fPIC -std=c++0x -Bsymbolic $(CFLAGS) -c $< -o $@
 
+build_elfloader_so: tb/dpi/elfloader.cc
+	$(CXX) -shared -fPIC -std=c++0x -std=c++17 -I$(QUESTASIM_HOME)/include -I/include -c $< -o tb/dpi/elfloader.o
+	$(CXX) -shared tb/dpi/elfloader.o -o tb/dpi/elfloader.so
+
 $(dpi-library)/cl_dpi.so: $(dpi)
 	$(CXX) -shared -m64 -o $(dpi-library)/cl_dpi.so $? -L$(RISCV)/lib -L$(SPIKE_ROOT)/lib -Wl,-rpath,$(RISCV)/lib -Wl,-rpath,$(SPIKE_ROOT)/lib -lfesvr
 
@@ -93,10 +97,8 @@ compile: $(library) $(dpi) $(dpi-library)/cl_dpi.so
 	@test -f scripts/compile.tcl || { echo "ERROR: scripts/compile.tcl file does not exist. Did you run make scripts in bender mode?"; exit 1; }
 	vsim -c -do 'source scripts/compile.tcl; quit'
 
-build: compile $(dpi)
+build: compile $(dpi) build_elfloader_so
 	vopt $(compile_flag) -suppress 3053 -suppress 8885 -work $(library)  $(top_level) -o $(top_level)_optimized +acc -check_synthesis
-	$(CXX) -shared -fPIC -std=c++0x -std=c++17 -I$(QUESTASIM_HOME)/include -I/include -c tb/dpi/elfloader.cc -o tb/dpi/elfloader.o
-	$(CXX) -shared tb/dpi/elfloader.o -o tb/dpi/elfloader.so
 
 
 run:
